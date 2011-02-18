@@ -73,7 +73,7 @@ if ($action == "login") {
 				// Update password
 				$table = new Table("administrators", $admin['username'], "username");
 				$table->password = md5($new_password);
-				$table->update();
+				$table->renew();
 				
 				Session::set("success", "Success! Password was updated");
 			}

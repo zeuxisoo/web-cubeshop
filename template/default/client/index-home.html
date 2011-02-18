@@ -1,0 +1,52 @@
+<!--{include:client/header.html}-->
+<div class="panel-home">
+	<!--{include:client/block-flow-message.html}-->
+	<div class='detail round-corner'>
+		<h2 class="subject">Server Information</h2>
+		<ul class="clear-fix">
+			<li class="label">Server Time</li>
+			<li class="text">{$info['server']['time']}</li>
+			<li class="label">Server Engine</li>
+			<li class="text">{$_SERVER['SERVER_SOFTWARE']}</li>
+		</ul>
+		<ul class="clear-fix">
+			<li class="label">SQL Version</li>
+			<li class="text">{$info['server']['sql_version']}</li>
+			<li class="label">GD Supported?</li>
+			<li class="text">{$info['server']['is_support_gd']}</li>
+		</ul>
+		<ul class="clear-fix">
+			<li class="label">Max Upload Size</li>
+			<li class="text">{$info['server']['upload_detail']['max_upload_size']}</li>
+			<li class="label">Max Post Size</li>
+			<li class="text">{$info['server']['upload_detail']['max_post_size']}</li>
+		</ul>
+		<ul class="clear-fix">
+			<li class="label">Global Variable?</li>
+			<li class="text">{$info['server']['is_global_variable']}</li>
+			<li class="label">Safe Mode?</li>
+			<li class="text">{$info['server']['is_safe_mode']}</li>
+		</ul>	
+	</div>
+	
+	<div class="detail round-corner">
+		<h2 class="subject">System Infomation</h2>
+		<ul class="clear-fix">
+			<li class="label">Database Size</li>
+			<li class="text">{$info['system']['database_size']}</li>
+			<li class="label">Upload File Size</li>
+			<li class="text">{$info['system']['uploaded_file_size']}</li>
+		</ul>
+	</div>
+	
+	<div class="detail round-corner">
+		<h2 class="subject">Memorandum</h2>
+		<form action="${PHP_SELF}" method="post">
+		<input type="hidden" name="action" value="{$action}" />
+		<input type="hidden" name="option" value="update-memo" />
+			<div><textarea name="memo" class="memo">{$memo}</textarea></div>
+			<div><input type="submit" name="commit" value="Update" class="control" /></div>
+		</form>
+	</div>
+</div>
+<!--{include:client/footer.html}-->

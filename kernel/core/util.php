@@ -214,6 +214,28 @@ class Util {
 		}
 	}
 	
+	public static function is_client() {
+		global $config;
+		
+		$client_auth = Request::cookie($config['client']['cookie_auth_name']);
+
+		if (isset($client_auth) === true && empty($client_auth) === false) {
+			list($client_username, $client_password, $client_auth_key) = explode("\t", Util::make_auth($client_auth, "DECODE"));
+			
+			return sha1($client_username.$client_password.$config['client']['cookie_secure_key']) === $client_auth_key;
+		}
+		return false;
+	}	
+	
+	public static function need_client() {
+		global $config;
+		
+		if (self::is_client() === false) {
+			Session::set("error", "Please login first");
+			self::redirect($config['init']['site_url'].'/'.$config['client']['login_page']);
+		}
+	}
+	
 	public static function make_url($url, $parameters = array()) {
 		return empty($parameters) === true ? $url : $url."?".http_build_query($parameters);
 	}

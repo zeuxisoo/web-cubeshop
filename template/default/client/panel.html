@@ -1,0 +1,44 @@
+<!--{include:client/header.html}-->
+<div class="panel">
+	<div class="left float-left y-flow">
+		
+			<div class="detail round-corner">
+				<h2>Welcome</h2>
+				<div class="clear-fix">
+					<div class="user float-left">{$admin['username']}</div>
+					<div class="text-align-right">
+						<a href="${PHP_SELF}?action=home" target="content">
+							<img src="${SITE_URL}/static/image/admin/panel-home.png" width="12" height="12" class="tooltip" title="Panel Home" alt="Panel Home" />
+						</a>						
+						<a href="${PHP_SELF}?action=change-password" target="content">
+							<img src="${SITE_URL}/static/image/admin/panel-change-password.gif" width="12" height="12" class="tooltip" title="Change Password" alt="Change password" />
+						</a>
+						<a href="${PHP_SELF}?action=logout" class="tooltip" title="Logout">
+							<img src="${SITE_URL}/static/image/admin/panel-logout.png" width="12" height="12" alt="Logout" />
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="navigation">
+				<!--{foreach:$navigations $navigation}-->
+					<!--{foreach:$navigation $item}-->
+						<ul class="round-corner">
+							<h2>{$item['group']}</h2>
+							<!--{foreach:$item['items'] $row}-->
+								<li>
+									<a href="{$row['link']}" target="content">
+										{$row['text']}
+									</a>
+								</li>
+							<!--{/foreach}-->
+						</ul>
+					<!--{/foreach}-->
+				<!--{/foreach}-->
+			</div>
+		
+	</div>
+	<div class="right float-left">
+		<iframe id="content" name="content" class="content" width="100%" height="100%" scrolling="auto" frameborder="0" src="${PHP_SELF}?action=home"></iframe>
+	</div>
+</div>
+<!--{include:client/footer.html}-->

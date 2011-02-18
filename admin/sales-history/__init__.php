@@ -8,7 +8,7 @@ Module::create('navigation')->add(array(
 	'group' => 'Sales History',
 	'items' => array(
 		array(
-			"text" => "Create Sales History",
+			"text" => "Add Sales History",
 			"link" => Util::make_url($module_url."/create.php"),
 		),
 		array(
