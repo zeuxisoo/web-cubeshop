@@ -1,0 +1,7 @@
+.DS_Store
+.*~
+attachment/cube-cover/*
+attachment/product-cover/*
+cube-cover/*
+product-cover/*
+cache/template/*

@@ -1,0 +1,9 @@
+<!--{if:empty($flow_message['error']) === false || empty($flow_message['success']) === false}-->
+	<div class="block flow-message round-corner">
+		<!--{if:empty($flow_message['error']) === false}-->
+			<span class="error">{$flow_message['error']}</span>
+		<!--{else}-->
+			<span class="success">{$flow_message['success']}</span>
+		<!--{/if}-->
+	</div>
+<!--{/if}-->

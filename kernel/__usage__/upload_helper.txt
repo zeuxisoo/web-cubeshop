@@ -1,0 +1,64 @@
+Return Value:
+-------------
+Array
+(
+	[file_name] => thumb_20101020160519_1287561919.jpg
+	[file_name_resized] => thumb_20101020160519_1287561919.jpg
+	[file_path] => /home/httpd/html/site/attachment/thumb/
+	[file_path_with_name] => /home/httpd/html/site/attachment/thumb/thumb_20101020160519_1287561919.jpg
+)
+
+Multi Thumb Image:
+-------------
+// 上傳原圖
+$data = Upload_Helper::save_image(array(
+	'input_field' => $_FILES['image_field'],
+	'save_to_folder' => ATTACHMENT_ROOT."/photo",
+));
+
+// 基於原圖生成縮圖 150x150
+$data2 = Upload_Helper::create_thumb_image(array(
+	'file_path_with_name' => $data['file_path_with_name'],
+	'resize_to_folder' => ATTACHMENT_ROOT."/thumb/150x150",
+	'resize_width' => 150,
+	'resize_height' => 150,
+));
+
+// 基於原圖生成縮圖 300x300
+$data3 = Upload_Helper::create_thumb_image(array(
+	'file_path_with_name' => $data['file_path_with_name'],
+	'resize_to_folder' => ATTACHMENT_ROOT."/thumb/300x300",
+	'resize_width' => 300,
+	'resize_height' => 300,
+));	
+
+One Thumb:
+-------------
+// 上傳原圖並生成縮圖
+$data = Upload_Helper::save_image_with_resize(array(
+	'input_field' => $_FILES['image_field'],
+	'save_to_folder' => ATTACHMENT_ROOT."/photo",
+	'resize_to_folder' => ATTACHMENT_ROOT."/thumb",
+	'resize_width' => 300,
+	'resize_height' => 500,
+));
+
+Multi Upload Simply (Added 21/10/2010 5:27 PM)
+-------------
+// 上載和多次縮圖 
+	$data = Upload_Helper::save_image_with_multi_thumb(array(
+		'normal' => array(
+		'input_field' => $_FILES['image_field'],
+		'save_to_folder' => ATTACHMENT_ROOT."/test/1",
+		),
+		'thumb' => array(
+			array('resize_width' => 150, "resize_height" => 150, "resize_to_folder" => ATTACHMENT_ROOT."/test/2"),
+			array('resize_width' => 250, "resize_height" => 250, "resize_to_folder" => ATTACHMENT_ROOT."/test/3"),
+			array('resize_width' => 350, "resize_height" => 350, "resize_to_folder" => ATTACHMENT_ROOT."/test/4"),
+			array('resize_width' => 450, "resize_height" => 450, "resize_to_folder" => ATTACHMENT_ROOT."/test/5"),
+			array('resize_width' => 550, "resize_height" => 550, "resize_to_folder" => ATTACHMENT_ROOT."/test/6"),
+			array('resize_width' => 650, "resize_height" => 650, "resize_to_folder" => ATTACHMENT_ROOT."/test/7"),
+			array('resize_width' => 750, "resize_height" => 750, "resize_to_folder" => ATTACHMENT_ROOT."/test/8"),
+			array('resize_width' => 850, "resize_height" => 850, "resize_to_folder" => ATTACHMENT_ROOT."/test/9"),
+		)
+	));

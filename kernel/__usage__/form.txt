@@ -1,0 +1,150 @@
+// Simply :: Create Detail View
+Form::bulid(Form::IS_DETAIL, Form_View::create_detail('Create Form', array(
+	Form_View::input("Input", "new_password", [source], "email validate[required,length[6,20]]"),
+	Form_View::input("Remark", "old_password", [source], "validate[required,length[6,20]]", "Please empty it if not change"),
+	Form_View::select("Select", "age", array(
+		10 => 10,
+		11 => 11,
+		12 => 12,
+	), [source]),
+	Form_View::checkbox("Checkbox", array(
+		array('Movie', 'love[]', 'movie', 'love_movie'),
+		array('Coding', 'love[]', 'coding', 'love_coding'),
+	), [source array('movie', 'coding')]),
+	Form_View::radio("Radio", array(
+		array('Movie', 'love[]', 'movie', 'love_movie'),
+		array('Coding', 'love[]', 'coding', 'love_coding'),
+	), [source array('movie', 'coding')]),
+	Form_View::textarea("Textarea", "editor"),
+	Form_View::upload_image("Upload Image", "images[]", "../../static/samplepic/50x50.jpg", 50, 50),
+	Form_View::upload_file("Upload File", "files[]", "../../static/samplepic/50x50.jpg"),
+)));
+
+// Simply :: Create List View
+Form::bulid(Form::IS_LIST, Form_View::create_list('Create List', array(
+	array(null, '20%' => 'Preview', 'Item No', 'Name', '10%' => 'Manage'),
+	array(
+		1 => array(null, Form_View::preview('image', '../../static/samplepic/50x50.jpg', 50, 50), 'P-001', 'Product 1', Form_View::manage(1)),
+		2 => array(null, Form_View::preview('file', '../../static/samplepic/50x50.jpg'), 'P-002', 'Product 2', Form_View::manage(2)),
+	)
+), '1 2 3 4 5'));
+
+// Complex :: Create Detail View
+Form::bulid(Form::IS_DETAIL, array(
+	'init' => array(
+		'action' => 'index.php',
+		'method' => 'post',
+		'name' => 'submit-form',
+	),
+	'hidden' => array(
+		array('name' => 'action', 'value' => 'create'),
+		array('name' => 'option', 'value' => 'go'),
+	),
+	'content' => array(
+		'title' => "New Form",
+		
+		'rows' => array(
+			array(
+				'label' => 'Input',
+				'input' => array('type' => 'text', 'name' => 'new_password', 'class' => 'email validate[required,length[6,20]]'),
+			),
+			array(
+				'label' => 'Remark',
+				'input' => array('type' => 'text', 'name' => 'old_password', 'class' => 'validate[required,length[6,20]]'),
+				'remark'=> 'Please empty it if not change',
+			),
+			array(
+				'label' => array('text' => 'Select', 'class' => 'select'),
+				'select'=> array('name' => 'age', 'options' => array(
+					10 => 10,
+					11 => 11,
+					12 => 12,
+				)),
+			),
+			array(
+				'label' => array('text' => 'CheckBox', 'class' => 'checkbox'),
+				'checkbox' => array(
+					'type' => 'checkbox',
+					'options' => array(
+						array('label' => 'Movie', 'name' => 'love[]', 'id' => 'love_movie', 'value' => 'movie'),
+						array('label' => 'Coding', 'name' => 'love[]', 'id' => 'love_coding', 'value' => 'coding')
+					)
+				),
+			),
+			array(
+				'label' => array('text' => 'Radio', 'class' => 'radio'),
+				'checkbox' => array(
+					'type' => 'radio',
+					'options' => array(
+						array('label' => 'Movie', 'name' => 'love[]', 'id' => 'love_movie', 'value' => 'movie'),
+						array('label' => 'Coding', 'name' => 'love[]', 'id' => 'love_coding', 'value' => 'coding')
+					)
+				),
+			),
+			array(
+				'label' => array('text' => 'Textarea', 'class' => 'textarea'),
+				'textarea' => array('name' => 'editor', 'class' => 'editor'),
+			),
+			array(
+				'label' => 'Upload Image',
+				'input' => array('type' => 'file', 'name' => 'images[]'),
+				'preview' => array(
+					'type' => 'image',
+					'info' => array('src' => '../../static/samplepic/50x50.jpg', 'width' => 50, 'height' => 50)
+				)
+			),
+			array(
+				'label' => 'Upload File',
+				'input' => array('type' => 'file', 'name' => 'files[]'),
+				'preview' => array(
+					'type' => 'file',
+					'info' => array('src' => '../../static/samplepic/50x50.jpg')
+				)
+			),
+		),
+		
+		'control' => array(
+			'input' => array(
+				array('type' => 'submit', 'name' => 'commit', 'value' => 'Update', 'class' => 'control'),
+				array('type' => 'reset', 'name' => 'clear', 'value' => 'Clear', 'class' => 'control')
+			)
+		),
+	)
+));
+
+// Complex :: Create List View
+Form::bulid(Form::IS_LIST, array(
+	'init' => array(
+		'action' => 'index.php',
+		'method' => 'post',
+		'name' => 'submit-form',
+	),
+	'content' => array(
+		'title' => 'New List',
+	
+		'table' => array(
+			'header' => array(null, '20%' => 'Preview', 'Item No', 'Name', '10%' => 'Manage'),
+		
+			'rows' => array(
+				1 => array(null, array(
+						'type' => 'image', 
+						'src' => '../../static/samplepic/50x50.jpg',
+						'width' => '50',
+						'height' =>'50'
+					), 'P-001', 'Product 1', array('Edit' => 'http://hk.yahoo.com')
+				),
+				
+				2 => array(null, array(
+						'type' => 'file',
+						'src' => '../../static/samplepic/50x50.jpg',
+					), 'P-002', 'Product 2', array('Edit' => 'http://hk.yahoo.com')
+				),
+			),
+		),
+					
+		'control' => array(
+			'pagebar' => '1 2 3 4 5',
+			'delete' => array('type' => 'submit', 'name' => 'commit', 'value' => 'Delete', 'class' => 'control'),
+		),
+	),
+));

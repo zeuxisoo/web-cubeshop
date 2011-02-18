@@ -1,0 +1,32 @@
+<!--{include:admin/header.html}-->
+<div id="login">
+	<h1>Admin Control Panel</h1>
+	<!--{if:empty($flow_message['error']) === false}-->
+		<div class="flow-message round-corner">
+			<span class="error">{$flow_message['error']}</span>
+		</div>
+	<!--{/if}-->
+	<form action="${PHP_SELF}?action=login" method="post" class="round-corner shadow">
+		<p>
+			<label>Username</label>
+			<input type="text" name="username" id="username" class="name" />
+		</p>
+		<p>
+			<label>Password</label>
+			<input type="password" name="password" id="password" class="password" />
+		</p>
+		<div class="clear-fix">
+			<div class="remember">
+				<input type="checkbox" name="remember" id="remember" value="315360000" />
+				Remember Me
+			</div>
+			<div class="action">
+				<input type="submit" name="commit" id="commit" value="Log In" />
+			</div>
+		</div>
+	</form>
+	<p class="link">
+		<a href="index.php">&lt; Back to Home!</a>
+	</p>
+</div>
+<!--{include:admin/footer.html}-->

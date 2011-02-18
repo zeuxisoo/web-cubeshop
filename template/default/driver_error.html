@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Driver Error</title>
+<meta name="copyright" content="SeekStudio" />
+<meta name="publisher" content="Seekstudio" />
+<meta name="author" content="Zeuxis Lo (http://zeuxis.me/)" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="-1" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<style type="text/css">
+body  	  { font-size: 12px; font-family: Tahoma; }
+div.title { color: #FF0000; font-weight: bold; }
+ul        { list-style-type: none; margin: 0px; padding: 0px; clear: both; padding: 5px 0px; }
+ul li 	  { float: left; }
+ul li:first-child { font-weight: bold; width: 80px; }
+</style>
+</head>
+<body>
+<div id="wapper">
+	<div class="title">Driver Error Messages</div>
+	<ul>
+		<li>Driver</li>
+		<li>:: {$driver}</li>
+	</ul>	
+	<ul>
+		<li>Time</li>
+		<li>:: {$time}</li>
+	</ul>
+	<ul>
+		<li>Error</li>
+		<li>:: {$error}</li>
+	</ul>
+	<ul>
+		<li>Error No</li>
+		<li>:: {$error_no}</li>
+	</ul>
+	<ul>
+		<li>Query</li>
+		<li>:: {$sql}</li>
+	</ul>
+	<!--{if:empty($message) === false}-->
+	<ul>
+		<li>Message</li>
+		<li>:: {$message}</li>
+	</ul>
+	<!--{/if}-->
+</body>
+</html>

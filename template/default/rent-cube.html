@@ -1,0 +1,42 @@
+<!--{include:header.html}-->
+<div id="content" class="rent-cube margin-width clear-fix">
+	<h2>I would like to rent a <em>Cube</em> ...</h2>
+
+	<!--{if:empty($flow_message['error']) === false}-->
+	<div class="flow-message round-corner">
+		<span class="error">{$flow_message['error']}</span>
+	</div>
+	<!--{/if}-->
+	<!--{if:empty($flow_message['success']) === false}-->
+	<div class="flow-message round-corner">
+		<span class="success">{$flow_message['success']}</span>
+	</div>
+	<!--{/if}-->
+
+	<form action="${PHP_SELF}" method="post">
+	<input type="hidden" name="action" value="rent" />
+	<div class="form">
+		<dl>
+			<dt>Contact Person：</dt>
+			<dd><input type="text" name="contact_person" id="contact_person" class="contact_person" /></dd>
+		</dl>
+		<dl>
+			<dt>Contact phone：</dt>
+			<dd><input type="text" name="telephone" id="telephone" class="telephone" /></dd>
+		</dl>
+		<dl>
+			<dt>Contact Email：</dt>
+			<dd><input type="text" name="email" id="email" class="email" /></dd>
+		</dl>
+		<dl>
+			<dt>Expected Price：</dt>
+			<dd><input type="text" name="expected_price" id="expected_price" class="expected_price" /></dd>
+		</dl>
+		<dl>
+			<dt>&nbsp;</dt>
+			<dd><input type="submit" name="commit" id="commit" value="Rent" class="commit" /></dd>
+		</dl>
+	</div>
+	</form>
+</div>
+<!--{include:footer.html}-->

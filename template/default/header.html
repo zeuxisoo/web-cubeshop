@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<meta name="robots" content="index, follow"/>
+<meta name="googlebot" content="index, follow"/>
+<meta name="baiduspider" content="index, follow"/>
+<title>{$config['init']['site_name']}</title>
+<link rel="shortcut icon" href="${SITE_URL}/static/image/icon.png" />
+<link rel="stylesheet" type="text/css" href="${SITE_URL}/static/stylesheet/reset.css" />
+<link rel="stylesheet" type="text/css" href="${SITE_URL}/static/stylesheet/default.css" />
+<script language="javascript" type="text/javascript">var SITE_URL = "${SITE_URL}";</script>
+<script language="javascript" type="text/javascript" src="${SITE_URL}/static/javascript/jquery.js"></script>
+<script language="javascript" type="text/javascript" src="${SITE_URL}/static/javascript/default.js"></script>
+</head>
+<body>
+<div id="top">
+	<div class="container">
+		<div class="menu clear-fix">
+			Welcome, Guest! | <a href="${SITE_URL}/page.php?type=about-us">About Us</a> | <a href="${SITE_URL}/page.php?type=contact-us">Contact Us</a>
+		</div>
+	</div>
+</div>
+<div id="wrapper">
+	<div id="header" class="clear-fix">
+		<div class="logo">
+			<h1>{$config['init']['site_name']}</h1>
+			<h2>{$config['init']['site_description']}</h2>
+		</div>
+		<div class="menu">
+			<ul>
+				<li><a href="index.php" class="item-1">Cubes</a></li>
+				<li><a href="product.php" class="item-2">Products</a></li>
+				<li><a href="random.php" class="item-3">Random</a></li>
+				<li><a href="hot.php" class="item-4">Hot!</a></li>
+			</ul>
+		</div>
+	</div>
