@@ -98,7 +98,10 @@ if ($action == "login") {
 		'cube_name' => $cube['cube_name'],
 		'total_product' => $total_product,
 		'create_date' => Util::to_date_time($cube['create_date']),
-		'rent_price' => $cube['rent_price']
+		'rent_price' => $cube['rent_price'],
+		
+		'cover' => ATTACHMENT_URL.'/cube-cover/'.$cube['cube_cover'],
+		'description' => $cube['description']
 	);
 	
 	include_once View::display("client/index-home.html");
