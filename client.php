@@ -27,7 +27,7 @@ if ($action == "login") {
 			
 			$password = md5($password);
 			$auth_key = sha1($username.$password.$config['client']['cookie_secure_key']);
-			$auth_string = Util::make_auth("$username\t$password\t$auth_key");
+			$auth_string = Permission_Helper::make_auth("$username\t$password\t$auth_key");
 
 			Util::add_cookie($config['client']['cookie_auth_name'], $auth_string, time()+$remember);
 		}

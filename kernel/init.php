@@ -71,7 +71,7 @@ ob_get_clean(); ob_start('ob_gzhandler');
 $admin = Util::fill_value_for_key(array("username", "password", "auth_key"));
 $admin_auth = Request::cookie($config['admin']['cookie_auth_name']);
 if (isset($admin_auth) === true && empty($admin_auth) === false) {
-	list($admin_username, $admin_password, $admin_auth_key) = explode("\t", Util::make_auth($admin_auth, "DECODE"));
+	list($admin_username, $admin_password, $admin_auth_key) = explode("\t", Permission_Helper::make_auth($admin_auth, "DECODE"));
 	$admin = array(
 		'username' => $admin_username,
 		'password' => $admin_password,
@@ -84,7 +84,7 @@ unset($admin_auth);
 $client = Util::fill_value_for_key(array("username", "password", "auth_key"));
 $client_auth = Request::cookie($config['client']['cookie_auth_name']);
 if (isset($client_auth) === true && empty($client_auth) === false) {
-	list($client_username, $client_password, $client_auth_key) = explode("\t", Util::make_auth($client_auth, "DECODE"));
+	list($client_username, $client_password, $client_auth_key) = explode("\t", Permission_Helper::make_auth($client_auth, "DECODE"));
 	$client = array(
 		'username' => $client_username,
 		'password' => $client_password,

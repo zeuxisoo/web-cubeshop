@@ -33,10 +33,6 @@ class Util {
 		return $script_uri;
 	}
 
-	public static function is_debug() {
-		return defined("ENABLE_DEBUG_MODE") && ENABLE_DEBUG_MODE === true;
-	}
-
 	public static function end_with($haystack, $needle, $case=true) {
 		if ($case) {
 			return (strcmp(substr($haystack, strlen($haystack) - strlen($needle)),$needle)===0);
@@ -125,6 +121,31 @@ class Util {
 	public static function to_date_time($time_stamp, $format = 'Y-m-d', $time_zone = 8) {
 		return gmdate($format, $time_stamp + $time_zone * 3600);
 	}
+
+	public static function to_time_stamp($date_time, $sep_datetime = ' ', $sep_date = '-', $sep_time = ':') {
+		$time_table = explode($sep_datetime, $date_time);
+
+		if (count($time_table) == 1) {
+			list($yy, $mm, $dd) = explode($sep_date, $time_table[0]);
+			
+			if (empty($yy) || empty($mm) || empty($dd)) {
+				return "(ERROR FORMAT)";
+			}else{
+				return mktime(0, 0, 0, $mm, $dd, $yy);
+			}
+		}else{
+			list($yy, $mm, $dd) = explode($sep_date, $time_table[0]);
+			list($hh, $ii, $ss) = explode($sep_time, $time_table[1]);
+
+			if (empty($yy) || empty($mm) || empty($dd)) {
+				return "(ERROR FORMAT -> Date)";
+			}elseif (empty($hh) || empty($ii) || empty($ss)) {
+				return "(ERROR FORMAT -> Time)";
+			}else{
+				return mktime($hh, $ii, $ss, $mm, $dd, $yy);
+			}
+		}
+	}
 	
 	public static function redirect($url, $query_string = array(), $time = 0, $message = '') {
 		$url = str_replace(array("\n", "\r"), '', $url);
@@ -157,83 +178,9 @@ class Util {
 			exit($string);
 		}
 	}
-
-	public static function to_time_stamp($date_time, $sep_datetime = ' ', $sep_date = '-', $sep_time = ':') {
-		$time_table = explode($sep_datetime, $date_time);
-
-		if (count($time_table) == 1) {
-			list($yy, $mm, $dd) = explode($sep_date, $time_table[0]);
-			
-			if (empty($yy) || empty($mm) || empty($dd)) {
-				return "(ERROR FORMAT)";
-			}else{
-				return mktime(0, 0, 0, $mm, $dd, $yy);
-			}
-		}else{
-			list($yy, $mm, $dd) = explode($sep_date, $time_table[0]);
-			list($hh, $ii, $ss) = explode($sep_time, $time_table[1]);
-
-			if (empty($yy) || empty($mm) || empty($dd)) {
-				return "(ERROR FORMAT -> Date)";
-			}elseif (empty($hh) || empty($ii) || empty($ss)) {
-				return "(ERROR FORMAT -> Time)";
-			}else{
-				return mktime($hh, $ii, $ss, $mm, $dd, $yy);
-			}
-		}
-	}
 	
 	public static function is_ajax() {
 		return (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest'));
-	}
-	
-	public static function make_auth($string, $operation = 'ENCODE') {
-		$string = $operation == 'DECODE' ? base64_decode($string) : base64_encode($string);
-		return $string;
-	}
-	
-	public static function is_admin() {
-		global $config;
-		
-		$admin_auth = Request::cookie($config['admin']['cookie_auth_name']);
-
-		if (isset($admin_auth) === true && empty($admin_auth) === false) {
-			list($admin_username, $admin_password, $admin_auth_key) = explode("\t", Util::make_auth($admin_auth, "DECODE"));
-			
-			return sha1($admin_username.$admin_password.$config['admin']['cookie_secure_key']) === $admin_auth_key;
-		}
-		return false;
-	}
-	
-	public static function need_admin() {
-		global $config;
-		
-		if (self::is_admin() === false) {
-			Session::set("error", "Please login first");
-			self::redirect($config['init']['site_url'].'/'.$config['admin']['login_page']);
-		}
-	}
-	
-	public static function is_client() {
-		global $config;
-		
-		$client_auth = Request::cookie($config['client']['cookie_auth_name']);
-
-		if (isset($client_auth) === true && empty($client_auth) === false) {
-			list($client_username, $client_password, $client_auth_key) = explode("\t", Util::make_auth($client_auth, "DECODE"));
-			
-			return sha1($client_username.$client_password.$config['client']['cookie_secure_key']) === $client_auth_key;
-		}
-		return false;
-	}	
-	
-	public static function need_client() {
-		global $config;
-		
-		if (self::is_client() === false) {
-			Session::set("error", "Please login first");
-			self::redirect($config['init']['site_url'].'/'.$config['client']['login_page']);
-		}
 	}
 	
 	public static function make_url($url, $parameters = array()) {
