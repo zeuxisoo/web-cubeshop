@@ -86,7 +86,20 @@ if ($action == "login") {
 
 }elseif ($action == "home") {
 	
-	echo "index-home";
+	$cube = Table::fetch_one_by_column("cubes", $client['username'], "login_name");
+	$total_product = Table::count("products", "cube_id = $cube[id]");	
+	
+	$info['cube'] = array(
+		'contact_person' => $cube['contact_person'],
+		'phone' => $cube['phone'],
+		'email' => $cube['email'],
+		'cube_name' => $cube['cube_name'],
+		'total_product' => $total_product,
+		'create_date' => Util::to_date_time($cube['create_date']),
+		'rent_price' => $cube['rent_price']
+	);
+	
+	include_once View::display("client/index-home.html");
 
 }else{
 
