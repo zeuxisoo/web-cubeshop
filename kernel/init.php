@@ -90,7 +90,11 @@ if (isset($client_auth) === true && empty($client_auth) === false) {
 		'password' => $client_password,
 		'auth_key' => $client_auth_key
 	);
-	unset($client_username, $client_password, $client_auth_key);
+	
+	$row = Table::fetch_one_by_column("cubes", $client_username, "login_name");
+	$client['id'] = $row['id'];
+	
+	unset($client_username, $client_password, $client_auth_key, $row);
 }
 unset($admin_auth);
 
