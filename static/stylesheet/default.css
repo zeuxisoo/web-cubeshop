@@ -33,7 +33,7 @@ input.commit { border: 1px solid #000; background: none; }
 #header .logo h2 { padding: 5px 30px 0px 0px; text-align: right; color: #a9bfe4; }
 #header .menu { float: right; width: 617px; text-align: right; display: block; padding-top: 40px; }
 #header .menu ul { padding: 0px 0 0 62px; }
-#header .menu ul li { float: left; padding: 0px 19px 0px 0px; font-size: 37px; }
+#header .menu ul li { float: left; padding: 0px 18px 0px 0px; font-size: 37px; }
 #header .menu ul li a.item-1 { color: #9cc7ff; }
 #header .menu ul li a.item-2 { color: #7d95bf; }
 #header .menu ul li a.item-3 { color: #CCC0ff; }
@@ -49,7 +49,7 @@ input.commit { border: 1px solid #000; background: none; }
 
 /* cube.php, product-detail.php */
 #content.share .detail { margin: 0px 20px; }
-#content.share .detail .cover { float: left; width: 393px; }
+#content.share .detail .cover { float: left; width: 393px; text-align: center; }
 #content.share .detail .info { float: left; width: 530px; }
 #content.share .detail .info h1 { font-weight: bold; font-size: 30px; color: #979fa9; }
 #content.share .detail .info h2 { padding-top: 10px; line-height: 25px; }

@@ -1,20 +1,9 @@
 <!--{include:header.html}-->
 <div id="content" class="product clear-fix">
 	<ul class="proucts">
-		<li><a href="product-detail.php?id=1"><img src="${SITE_URL}/static/image/sample/200x200.png" alt="" /></a></li>
-		<li><img src="${SITE_URL}/static/image/sample/200x200.png" alt="" /></li>
-		<li><img src="${SITE_URL}/static/image/sample/200x200.png" alt="" /></li>
-		<li><img src="${SITE_URL}/static/image/sample/200x200.png" alt="" /></li>
-		
-		<li><img src="${SITE_URL}/static/image/sample/200x200.png" alt="" /></li>
-		<li><img src="${SITE_URL}/static/image/sample/200x200.png" alt="" /></li>
-		<li><img src="${SITE_URL}/static/image/sample/200x200.png" alt="" /></li>
-		<li><img src="${SITE_URL}/static/image/sample/200x200.png" alt="" /></li>
-		
-		<li><img src="${SITE_URL}/static/image/sample/200x200.png" alt="" /></li>
-		<li><img src="${SITE_URL}/static/image/sample/200x200.png" alt="" /></li>
-		<li><img src="${SITE_URL}/static/image/sample/200x200.png" alt="" /></li>
-		<li><img src="${SITE_URL}/static/image/sample/200x200.png" alt="" /></li>
+		<!--{foreach:$products $product}-->
+		<li><a href="product-detail.php?id={$product['id']}"><img src="${ATTACHMENT_URL}/product-cover/{$product['cover']}" alt="{$product['name']}" /></a></li>
+		<!--{/foreach}-->
 	</ul>
 </div>
 <!--{include:footer.html}-->

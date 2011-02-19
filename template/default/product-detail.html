@@ -2,28 +2,28 @@
 <div id="content" class="product-detail share clear-fix">
 	<div class="detail clear-fix">
 		<div class="cover">
-			<img src="${SITE_URL}/static/image/sample/380x350.png" alt="" />
+			<img src="${ATTACHMENT_URL}/product-cover/{$row['cover']}" alt="{$row['name']}" />
 		</div>
 		<div class="info">
-			<a href="cube.php?id=1"><h1>Cube Name</h1></a>
-			<h2>Cube Description balabala....!Cube Description balabala....!Cube Description balabala....!Cube Description balabala....!Cube Description balabala....!Cube Description balabala....!Cube Description balabala....!</h2>		
+			<a href="cube.php?id=1"><h1>{$row['cube_name']}</h1></a>
+			<h2>${nl2br($row['cube_description'])}</h2>		
 			
 			<span>Product Info</span>
 			<dl>
 				<dt>Name</dt>
-				<dd>Diablo 3</dd>
+				<dd>{$row['name']}</dd>
 			</dl>
 			<dl>
 				<dt>Price</dt>
-				<dd>US $99.9</dd>
+				<dd>{$row['price']}</dd>
 			</dl>
 			<dl>
 				<dt>Stock</dt>
-				<dd>0</dd>
+				<dd>{$row['stock']}</dd>
 			</dl>
 			<dl>
 				<dt class="row">Description</dt>
-				<dd class="text">Product Description balabala...!Product Description balabala...!</dd>
+				<dd class="text">${nl2br($row['description'])}</dd>
 			</dl>
 		</div>
 	</div>

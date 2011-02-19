@@ -2,24 +2,18 @@
 <div id="content" class="cube share clear-fix">
 	<div class="detail clear-fix">
 		<div class="cover">
-			<img src="${SITE_URL}/static/image/sample/380x350.png" alt="" />
+			<img src="${ATTACHMENT_URL}/cube-cover/{$cube['cube_cover']}" alt="{$cube['cube_name']}" />
 		</div>
 		<div class="info">
-			<h1>Cube Name</h1>
-			<h2>Cube Description balabala....!Cube Description balabala....!Cube Description balabala....!Cube Description balabala....!Cube Description balabala....!Cube Description balabala....!Cube Description balabala....!</h2>		
+			<h1>{$cube['cube_name']}</h1>
+			<h2>${nl2br($cube['description'])}</h2>
 		</div>
 	</div>
 	<div class="product">
 		<ul>
-			<li><img src="${SITE_URL}/static/image/sample/200x200.png" alt="" /></li>
-			<li><img src="${SITE_URL}/static/image/sample/200x200.png" alt="" /></li>
-			<li><img src="${SITE_URL}/static/image/sample/200x200.png" alt="" /></li>
-			<li><img src="${SITE_URL}/static/image/sample/200x200.png" alt="" /></li>
-
-			<li><img src="${SITE_URL}/static/image/sample/200x200.png" alt="" /></li>
-			<li><img src="${SITE_URL}/static/image/sample/200x200.png" alt="" /></li>
-			<li><img src="${SITE_URL}/static/image/sample/200x200.png" alt="" /></li>
-			<li><img src="${SITE_URL}/static/image/sample/200x200.png" alt="" /></li>
+			<!--{foreach:$products $product}-->
+			<li><a href="product-detail.php?id={$product['id']}"><img src="${ATTACHMENT_URL}/product-cover/{$product['cover']}" alt="{$product['name']}" /></a></li>
+			<!--{/foreach}-->
 		</ul>
 	</div>
 </div>
