@@ -2,7 +2,7 @@
 <div id="content" class="product clear-fix">
 	<ul class="proucts">
 		<!--{foreach:$products $product}-->
-		<li><a href="product-detail.php?id={$product['id']}"><img src="${ATTACHMENT_URL}/product-cover/{$product['cover']}" alt="{$product['name']}" /></a></li>
+		<li><a href="product-detail.php?id={$product['id']}"><img src="${ATTACHMENT_URL}/product-cover/{$product['cover']}" alt="${htmlspecialchars($product['name'])}" /></a></li>
 		<!--{/foreach}-->
 	</ul>
 </div>

@@ -2,7 +2,7 @@
 <div id="content" class="clear-fix">
 	<ul class="cubes">
 		<!--{foreach:$cubes $cube}-->
-		<li><a href="cube.php?id={$cube['id']}"><img src="${ATTACHMENT_URL}/cube-cover/{$cube['cube_cover']}" alt="{$cube['cube_name']}" /></a></li>
+		<li><a href="cube.php?id={$cube['id']}"><img src="${ATTACHMENT_URL}/cube-cover/{$cube['cube_cover']}" alt="${htmlspecialchars($cube['cube_name'])}" /></a></li>
 		<!--{/foreach}-->
 	</ul>
 </div>

@@ -77,7 +77,11 @@ if ($action == "change-status") {
 		$manage_base_url =  array("id" => $row['id'], "action" => "change-status", "page" => $paginate->page_no);
 	
 		$rent_cube_rows[$row['id']] = array(
-			$row['contact_person'], $row['telephone'], $row['email'], $row['expected_price'], Util::to_date_time($row['create_date'], "Y-m-d H:i:s"), ucfirst($row['status']), 
+			htmlspecialchars($row['contact_person']), 
+			htmlspecialchars($row['telephone']), 
+			htmlspecialchars($row['email']), 
+			htmlspecialchars($row['expected_price']), 
+			Util::to_date_time($row['create_date'], "Y-m-d H:i:s"), ucfirst($row['status']), 
 			
 			Form_View::links(array(
 				"Wait" => Util::make_url(PHP_SELF, $manage_base_url + array("type" => "wait")),
