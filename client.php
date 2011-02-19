@@ -108,7 +108,7 @@ if ($action == "login") {
 
 }else{
 
-	if (Util::is_client() === true) {
+	if (Permission_Helper::is_client() === true) {
 		Module::init(array(
 			'module_root' => CLIENT_ROOT,
 			'module_url' => CLIENT_URL,

@@ -1,7 +1,7 @@
 <?php
 require_once dirname(dirname(dirname(__FILE__))).'/kernel/init.php';
 
-Util::need_client();
+Permission_Helper::need_client();
 
 // In change status mode
 if ($action == "change-status") {
