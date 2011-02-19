@@ -94,9 +94,11 @@ class Module_Content {
 	}
 	
 	public function show($name) {
-		foreach(self::$content[$name] as $priority) {
-			foreach($priority as $content) {
-				echo $content;
+		if (isset(self::$content[$name]) === true) {
+			foreach(self::$content[$name] as $priority) {
+				foreach($priority as $content) {
+					echo $content;
+				}
 			}
 		}
 	}
