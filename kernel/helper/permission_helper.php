@@ -26,7 +26,7 @@ class Permission_Helper {
 		
 		if (self::is_admin() === false) {
 			Session::set("error", "Please login first");
-			self::redirect($config['init']['site_url'].'/'.$config['admin']['login_page']);
+			Util::redirect($config['init']['site_url'].'/'.$config['admin']['login_page']);
 		}
 	}
 	
@@ -48,7 +48,7 @@ class Permission_Helper {
 		
 		if (self::is_client() === false) {
 			Session::set("error", "Please login first");
-			self::redirect($config['init']['site_url'].'/'.$config['client']['login_page']);
+			Util::redirect($config['init']['site_url'].'/'.$config['client']['login_page']);
 		}
 	}
 

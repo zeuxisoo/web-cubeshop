@@ -38,12 +38,14 @@ if ($action == "login") {
 	
 }elseif ($action == "logout") {
 
+	Permission_Helper::need_client();
+
 	Util::remove_cookie($config['client']['cookie_auth_name']);
 	Util::redirect(PHP_SELF);
 
 }elseif ($action == "change-password") {
 
-	Permission_Helper::need_admin();
+	Permission_Helper::need_client();
 
 	if ($option == "update") {
 
@@ -87,6 +89,8 @@ if ($action == "login") {
 	}
 
 }elseif ($action == "home") {
+
+	Permission_Helper::need_client();
 	
 	$cube = Table::fetch_one_by_column("cubes", $client['username'], "login_name");
 	$total_product = Table::count("products", "cube_id = $cube[id]");	

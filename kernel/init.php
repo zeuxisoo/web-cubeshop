@@ -99,7 +99,7 @@ if (isset($client_auth) === true && empty($client_auth) === false) {
 		Util::remove_cookie($config['client']['cookie_auth_name']);
 		Util::redirect($config['client']['login_page']);
 	}
-	
+
 	unset($client_username, $client_password, $client_auth_key, $row);
 }
 unset($admin_auth);

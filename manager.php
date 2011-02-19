@@ -38,6 +38,8 @@ if ($action == "login") {
 	
 }elseif ($action == "logout") {
 
+	Permission_Helper::need_admin();
+
 	Util::remove_cookie($config['admin']['cookie_auth_name']);
 	Util::redirect(PHP_SELF);
 
@@ -87,6 +89,8 @@ if ($action == "login") {
 	}
 
 }elseif ($action == "home") {
+
+	Permission_Helper::need_admin();
 
 	if ($option === "update-memo") {
 		
