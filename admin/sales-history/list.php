@@ -1,7 +1,7 @@
 <?php
 require_once dirname(dirname(dirname(__FILE__))).'/kernel/init.php';
 
-Util::need_admin();
+Permission_Helper::need_admin();
 
 // In change status mode
 if ($action == "change-status") {

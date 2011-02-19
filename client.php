@@ -43,7 +43,7 @@ if ($action == "login") {
 
 }elseif ($action == "change-password") {
 
-	Util::need_admin();
+	Permission_Helper::need_admin();
 
 	if ($option == "update") {
 

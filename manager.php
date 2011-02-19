@@ -43,7 +43,7 @@ if ($action == "login") {
 
 }elseif ($action == "change-password") {
 
-	Util::need_admin();
+	Permission_Helper::need_admin();
 
 	if ($option == "update") {
 
@@ -147,7 +147,7 @@ if ($action == "login") {
 
 }else{
 
-	if (Util::is_admin() === true) {
+	if (Permission_Helper::is_admin() === true) {
 		Module::init(array(
 			'module_root' => ADMIN_ROOT,
 			'module_url' => ADMIN_URL,

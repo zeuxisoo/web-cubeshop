@@ -95,7 +95,7 @@ if (isset($client_auth) === true && empty($client_auth) === false) {
 	$client['id'] = $row['id'];
 	
 	// If logged in admin mode will not trigger it (god mode?), else redirect to exists
-	if ($row['is_lock'] == "Y" && Util::is_admin() === false) {
+	if ($row['is_lock'] == "Y" && Permission_Helper::is_admin() === false) {
 		Util::remove_cookie($config['client']['cookie_auth_name']);
 		Util::redirect($config['client']['login_page']);
 	}
