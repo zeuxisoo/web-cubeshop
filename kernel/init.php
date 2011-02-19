@@ -94,6 +94,12 @@ if (isset($client_auth) === true && empty($client_auth) === false) {
 	$row = Table::fetch_one_by_column("cubes", $client_username, "login_name");
 	$client['id'] = $row['id'];
 	
+	// If logged in admin mode will not trigger it (god mode?), else redirect to exists
+	if ($row['is_lock'] == "Y" && Util::is_admin() === false) {
+		Util::remove_cookie($config['client']['cookie_auth_name']);
+		Util::redirect($config['client']['login_page']);
+	}
+	
 	unset($client_username, $client_password, $client_auth_key, $row);
 }
 unset($admin_auth);

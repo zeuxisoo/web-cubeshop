@@ -21,6 +21,8 @@ if ($action == "login") {
 			Session::set("error", "Not found user account");
 		}elseif ($row['login_password'] !== md5($password)) {
 			Session::set("error", "Password not match");
+		}elseif ($row['is_lock'] == "Y") {
+			Session::set("error", "Account Locked");
 		}else{
 			
 			$password = md5($password);

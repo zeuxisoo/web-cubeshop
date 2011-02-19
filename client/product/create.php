@@ -1,7 +1,7 @@
 <?php
 require_once dirname(dirname(dirname(__FILE__))).'/kernel/init.php';
 
-Util::need_admin();
+Util::need_client();
 
 // Define defails
 $page_info['page_title']['add'] = "Create Product";
