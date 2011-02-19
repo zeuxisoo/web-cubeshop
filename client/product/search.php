@@ -20,13 +20,6 @@ if ($action == "search") {
 	));	
 
 }else{
-
-	// Query Cubes
-	$records = Table::fetch_all("cubes", array("select" => "id, cube_name"));
-	$cubes = array();
-	foreach($records as $record) {
-		$cubes[$record['id']] = $record['cube_name'];
-	}
 	
 	// Load form core
 	Form::bulid(Form::IS_DETAIL, Form_View::create_detail($page_info['page_title']['search'], array(
