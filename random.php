@@ -3,7 +3,10 @@ require_once dirname(__FILE__)."/kernel/init.php";
 
 $products = Table::fetch_all("products", array(
 	"select" => "id, name, cover",
-	"order" => "ORDER BY RAND(), create_date DESC"
+	"order" => "ORDER BY RAND(), create_date DESC",
+	"where" => array(
+		"is_display" => "Y"
+	)
 ));
 
 include_once View::display('random.html');
