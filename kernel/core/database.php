@@ -7,15 +7,15 @@ class Database {
 
 	public static function create($config = array()) {
 		if (empty($config) === true) {
-			$this->debug('Configure can not empty');
+			self::debug('Configure can not empty');
 		}
 	
 		if (file_exists(KERNEL_ROOT.'/driver/'.strtolower($config['driver']).'.php') === false) {
-			$this->debug("Not found support driver in driver folder");
+			self::debug("Not found support driver in driver folder");
 		}
 		
 		if (empty($config['database']) === true) {
-			$this->debug("Database info can not empty");
+			self::debug("Database info can not empty");
 		}
 		
 		if ($config['host'] === null) {
