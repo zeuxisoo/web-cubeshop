@@ -25,17 +25,17 @@ define('ADMIN_URL', SITE_URL.'/'.$config['admin']['folder']);
 define('CLIENT_ROOT', dirname(KERNEL_ROOT).'/'.$config['client']['folder']);
 define('CLIENT_URL', SITE_URL.'/'.$config['client']['folder']);
 
-$_GET = Util::auto_quote($_GET);
-$_POST = Util::auto_quote($_POST);
-$_COOKIE = Util::auto_quote($_COOKIE);
-$_REQUEST = Util::auto_quote($_REQUEST);
-
 foreach(array('_COOKIE', '_POST', '_GET') as $_request) {
     foreach($$_request as $_key => $_value) {
         $_key{0} != '_' && $$_key = Util::auto_quote($_value);
     }
 }
 unset($_request, $_key, $_value, $_request);
+
+$_GET = Util::auto_quote($_GET);
+$_POST = Util::auto_quote($_POST);
+$_COOKIE = Util::auto_quote($_COOKIE);
+$_REQUEST = Util::auto_quote($_REQUEST);
 
 if (function_exists("date_default_timezone_set")) {
 	date_default_timezone_set($config['init']['timezone']);
